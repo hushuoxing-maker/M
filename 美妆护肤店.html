@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>美妆护肤店门头设计AI · 轻奢网红版</title>
+<style>
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+body{
+  font-family: "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #FDF6FB 0%, #F5EFF7 100%);
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+/* 顶部大标题长条 - 美妆轻奢玫瑰金+粉紫渐变 */
+.header{
+  width: 100%;
+  background: linear-gradient(90deg, #E786A7, #B983FF, #FFC2DC);
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(231,134,167,0.15);
+}
+.header h1{
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.header p{
+  font-size: 16px;
+  opacity: 0.95;
+}
+/* 内容卡片 */
+.container{
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 45px 40px;
+  box-shadow: 0 10px 40px rgba(231,134,167,0.08);
+}
+/* 输入提示 */
+.input-label{
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: left;
+  font-weight: 500;
+}
+/* 输入框 */
+.input-box{
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 16px;
+  border: 1px solid #DCDFE6;
+  border-radius: 12px;
+  outline: none;
+  transition: 0.3s;
+  margin-bottom: 22px;
+}
+.input-box:focus{
+  border-color: #E786A7;
+  box-shadow: 0 0 0 4px rgba(231,134,167,0.1);
+}
+/* 生成按钮 */
+.btn{
+  width: 100%;
+  padding: 17px;
+  background: linear-gradient(90deg, #E786A7, #B983FF);
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(231,134,167,0.2);
+}
+.btn:disabled{
+  background: #F4C9DA;
+  cursor: not-allowed;
+  transform: none;
+}
+/* 结果区域 */
+.result{
+  max-width: 800px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+}
+.item{
+  background: #fff;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  font-size: 15px;
+  border-left: 5px solid #E786A7;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.item-text{
+  flex: 1;
+}
+/* 复制按钮 */
+.copy-btn{
+  padding: 8px 14px;
+  background: #E786A7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+.copy-btn:hover{
+  background: #D16B8F;
+}
+/* 已复制永久灰色样式 */
+.copy-btn.copied{
+  background: #cccccc !important;
+  color: #666666 !important;
+  cursor: default !important;
+}
+/* 一键复制全部 */
+.copy-all-box{
+  text-align: center;
+  margin-top: 20px;
+}
+.copy-all-btn{
+  padding: 12px 24px;
+  background: #E786A7;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.copy-all-btn:hover{
+  background: #D16B8F;
+}
+</style>
+
+<!-- 顶部大标题 -->
+<div class="header">
+  <h1>💄 美妆护肤店门头设计AI · 轻奢网红版</h1>
+  <p>化妆品｜护肤品｜轻奢美妆｜美甲店｜网红打卡店</p>
+</div>
+
+<!-- 内容区 -->
+<div class="container">
+  <div class="input-label">在此输入你的需求（品牌名/行业/风格）：</div>
+  <input type="text" class="input-box" id="input" placeholder="例如：悦色美妆 轻奢护肤 玫瑰金不锈钢字 软膜灯箱">
+  <button class="btn" onclick="go()" id="generateBtn">✨ 生成10组提示词</button>
+</div>
+
+<!-- 结果展示区 -->
+<div class="result" id="result"></div>
+
+<script>
+// 美妆护肤店门头全套规则（完全按你写的）
+const 美妆配置 = {
+  核心风格: "高辨识度、高转化、吸引女性目光、突出品牌形象、轻奢精致、网红打卡感、商业街沿街独立美妆护肤店门头",
+  材质组合: [
+    "亚克力发光字搭配铝塑板底板",
+    "亚克力字不锈钢围边搭配玻璃或石材底板",
+    "软膜灯箱门头",
+    "玫瑰金或金色不锈钢字搭配大理石实纹UV版"
+  ],
+  材质质感: "高档质感、光泽精致、档次感强、底板统一高档",
+  字体设计: "精致小巧、易读优雅、商业展示风格、优雅圆体字体",
+  色彩体系: "粉色、玫瑰金、紫色、白色、金色轻奢色系、色彩鲜艳高辨识度、辅色中性色协调",
+  光影要求: "光线均匀不刺眼、白天自然光、突出材质质感与文字可读性",
+  结构布局: "完整正立面、门头覆盖整间店铺宽度、落地玻璃门、品牌名最大、广告语次之、卖点最小、产品海报比例合理、整体美观协调",
+  固定必含: "商业街沿街独立美妆护肤店门头、完整正立面、落地玻璃门、品牌名、广告语、主卖点、产品海报、购买理由文字排版、白天自然光、高辨识度、高对比配色、高档材质感、精致字体、色彩鲜艳、女性吸引力、轻奢风格、非摊位、非附墙、非临时结构",
+  负向提示: "非摊位、非推车、非夜市临时铺、非挂靠招牌、非附墙门头、非临时结构",
+  禁止内容: "斜侧视、夜景、摊位、附墙招牌、临时结构、施工细节"
+}
+
+let 当前需求 = ''
+let 所有提示词 = []
+
+// 随机选取
+function 随机取(arr, min, max) {
+  let count = Math.floor(Math.random() * (max - min + 1)) + min
+  let shuffled = [...arr].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, count).join('、')
+}
+
+// 生成单条（严格按你输出规则）
+function 生成单条(需求) {
+  let 材质 = 随机取(美妆配置.材质组合,1,1)
+  return `${美妆配置.核心风格}，${需求}，${材质}，${美妆配置.材质质感}，${美妆配置.字体设计}，${美妆配置.色彩体系}，${美妆配置.光影要求}，${美妆配置.结构布局}，${美妆配置.固定必含}，${美妆配置.负向提示}`
+}
+
+// 生成10组
+function 生成10组(需求) {
+  var arr = []
+  for(var i=0;i<10;i++){
+    arr.push(生成单条(需求))
+  }
+  return arr
+}
+
+// 复制单条 → 永久变灰
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied')
+  })
+}
+
+// 一键复制全部
+function copyAll() {
+  navigator.clipboard.writeText(所有提示词.join("\n\n")).then(() => {
+    alert("✅ 已复制全部 10 组美妆店门头提示词！")
+  })
+}
+
+// 主生成逻辑
+function go() {
+  const btn = document.getElementById('generateBtn')
+  var val = document.getElementById('input').value.trim()
+  
+  if (!val) {
+    alert("请输入需求，例如：悦色美妆 轻奢护肤 玫瑰金不锈钢字")
+    return
+  }
+
+  btn.disabled = true
+  btn.innerText = "⏳ 正在生成..."
+
+  setTimeout(() => {
+    当前需求 = val
+    var list = 生成10组(当前需求)
+    所有提示词 = list
+    var html = ''
+    
+    list.forEach((item, index) => {
+      html += `
+      <div class="item">
+        <div class="item-text">${index+1}. ${item}</div>
+        <button class="copy-btn" onclick="copyText('${item.replace(/'/g, '&apos;')}', this)">复制</button>
+      </div>`
+    })
+    
+    html += `
+    <div class="copy-all-box">
+      <button class="copy-all-btn" onclick="copyAll()">📋 一键复制全部10组</button>
+    </div>`
+    
+    document.getElementById('result').innerHTML = html
+    btn.disabled = false
+    btn.innerText = "✨ 生成10组提示词"
+  }, 600)
+}
+</script>
+</body>
+</html>
